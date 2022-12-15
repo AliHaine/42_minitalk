@@ -1,46 +1,27 @@
 #include "minitalk.h"
-/*void action_handler(int signum, siginfo_t *siginfo, void *s)
-{
-	char	c = 0;
-	int	i = 0;
-	printf("test");
-	//i = 0;
-	if (i < 8)
-	{
-		printf("ttest");
-	if (signum == SIGUSR1) {
-		//c = ((c << i) == 1) * 2;
-	} else {
-
-		//c = ((c << i) == 0) * 2;
-	}
-	//i++;
-	//}
-
-	else
-	{
-		write(1, &c, 1);
-		c = 0;
-		i = 0;
-	}
-	printf("ttest");
-}*/
-
 
 void action_handler(int signum, siginfo_t *siginfo, void *s)
 {
+	static char	c = 0;
+	static int	i = 7;
+	int			clientpid;
 
-	ft_printf("/value %d/", signum);
+	(void)siginfo;
+	(void)s;
+	clientpid = siginfo->si_pid;
 	if (signum == SIGUSR1)
 	{
-		ft_printf("su1");
+		c |= 1 << i;
 	}
-	else
+	i--;
+	if (i < 0)
 	{
-		ft_printf("su2");
+		write(1, &c, 1);
+		c = 0;
+		i = 7;
+		kill(clientpid, SIGUSR2);
 	}
 }
-
 
 int main(void)
 {
@@ -51,7 +32,7 @@ int main(void)
 	ft_printf("Server PID : %d\n", getpid());
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-	while (1 + 1 == 2)
+	while (1)
 		pause();
 
 	return (0);

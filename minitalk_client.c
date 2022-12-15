@@ -4,17 +4,17 @@ int	read_bit(int pid, char c)
 {
 	int b;
 
-	b = 8;
-	while (b > 0)
+	b = 7;
+	while (b + 1)
 	{
-		if (c << b & 1)
+		if (c >> b & 1)
 		{
-			ft_printf("1");
+			printf("1");
 			kill(pid, SIGUSR1);
 		}
 		else
 		{
-			ft_printf("0");
+			printf("0");
 			kill(pid, SIGUSR1);
 		}
 		b--;
@@ -23,7 +23,6 @@ int	read_bit(int pid, char c)
 	}
 	return (0);
 }
-
 
 int main(int argc, char *argv[])
 {
@@ -34,6 +33,6 @@ int main(int argc, char *argv[])
 		return(0);
 	}
 	read_bit(ft_atoi(argv[1]), *argv[2]);
-	kill(ft_atoi(argv[1]), SIGUSR2);
+	//kill(ft_atoi(argv[1]), SIGUSR2);
 
 }

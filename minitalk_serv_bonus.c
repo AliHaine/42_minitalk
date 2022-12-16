@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_serv.c                                    :+:      :+:    :+:   */
+/*   minitalk_serv_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayagmur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 13:29:35 by ayagmur           #+#    #+#             */
-/*   Updated: 2022/12/16 13:29:36 by ayagmur          ###   ########.fr       */
+/*   Created: 2022/12/16 13:42:42 by ayagmur           #+#    #+#             */
+/*   Updated: 2022/12/16 13:42:46 by ayagmur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	action_handler(int signum, siginfo_t *siginfo, void *s)
 {
